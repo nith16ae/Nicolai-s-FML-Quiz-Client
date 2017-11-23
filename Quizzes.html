@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="lib/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <meta charset="UTF-8">
+    <title>Quizzes - FML Quiz</title>
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+    <a href="MainPage.html">Main</a>
+    <a href="Quizzes.html" class="quizzesMenuButton id="quizzesMenuButton>Quizzes</a>
+    <a href="CreateAdmin.html" id="adminButton">Create Admin</a>
+    <a href="Users.html" id="userButton">Users</a>
+    <a href="UserAccount.html" id="accountButton">Account</a>
+    <a href="LoginPage.html" class="logoutButton">Logout</a>
+</div>
+
+<div class="quizzesPageMenu" id="quizzesPageMenu">
+    <div class="quizzesText">Chose below from your courses, to display the quizzes in that course.</div>
+    <div class="quizzesText2">Navigate to the Main page, to create a quiz from scratch!</div>
+        <div class="quizzesButtons">
+        <button id="ITFbutton">ITF</button>
+        <button id="DISbutton">DIS</button>
+        <button id="VOESbutton">VØS</button>
+        <button id="MAKRObutton">MAKRO</button>
+    </div>
+</div>
+
+<div id="deletionBoxQuizzes">
+    <p id="DeletionHeader">Quiz deletion</p>
+    <p>Below you can delete quizzes. Simply type in the quiz ID of the quiz you want to delete.</p>
+    <div>
+        <input id="deleteQuizUserInput" type="text" placeholder="Type the quiz ID"/>
+        <button id="deleteQuiz">DELETE</button>
+    </div>
+</div>
+
+</div>
+        <table id="table_id" class="displayQuizzes" class="responstable">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Course</th>
+                <th>Quiz ID</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody id="modal-tbody">
+
+            </tbody>
+        </table>
+</div>
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">2017 © All rights reserved - FML Quiz Inc.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/QuizzesPage.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Quiz - FML Quiz</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+<div class="topnav" id="myTopnav">
+    <button id="saveQuizButton">Save Quiz</button>
+    <button id="discardQuizButton">Discard Quiz</button>
+    <button id="howItWorksBtn">How it works</button>
+</div>
+<div id="howItWorks">
+    <p id="howItWorksHeader">How it works</p>
+    <p>Start by clicking on 'Add question' to add a question. Then click 'Add Choices' to add choices to your question.
+        Afterwards simply check the box, next to the correct answer. Finally, press 'Save Question' to add the whole thing
+        to your quiz. <br> <br>GL HF!</p>
+</div>
+<div id="topText">
+    <h1 id="createQuizTitle">Quiz title</h1>
+    <div class="lineAddQuestionsPage"></div>
+    <p id="createQuizCourse"></p>
+    <div id="divToAppendCourseID">
+</div>
+</div>
+
+
+<div id="quizEditor">
+
+    <div id="addQuestionsPageMenu">
+    <button class="quizzesMenuButton" id="addQuestionButton">Add Question</button>
+    <button id="addChoicesButton">Add Choices</button>
+    <button id="saveQuestionButton">Save Question</button>
+
+</div>
+
+<div id="questionsAndAnswers">
+
+</div>
+    <div id="answers"></div>
+
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">2017 © All rights reserved - FML Quiz Inc.</p>
+    </div>
+</footer>
+
+<script src="lib/js/jquery-3.2.1.js"></script>
+<script src="lib/js/bootstrap.js"></script>
+<script src="js/sdk.js"></script>
+<script src="js/AddQuestionsPage.js" type="text/javascript"></script>
+</body>
+</html>
