@@ -48,7 +48,7 @@ $(document).ready(() => {
                // let quizzes = (JSON.parse(data));
 
                 quizzes.forEach((quiz) => {
-                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"></td> <tr/>`);
+                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"><button data-name="${quiz.quizTitle}" data-id="${quiz.quizId}" class="takeQuizButton">Take Quiz</button></td> <tr/>`);
                     $('.courseId').html("IT-Forandringsledelse");
 
                     $('#modal-tbody tr').hover(
@@ -61,8 +61,13 @@ $(document).ready(() => {
                     );
 
                 });
-                $('.actionCell').append('<button class="takeQuizButton">Take Quiz</button>');
-                $('.takeQuizButton').click(() => {
+                $('.takeQuizButton').click((e) => {
+                    let id = e.currentTarget.getAttribute('data-id');
+                    let name = e.currentTarget.getAttribute('data-name');
+                    SDK.Storage.persist("Quiz ID", id);
+                    SDK.Storage.persist("Quiz name", name);
+                    SDK.Storage.persist("Quiz course", "IT-Forandringsledelse");
+
                     window.location.href = "TakeQuiz.html";
 
                 });
@@ -76,8 +81,10 @@ $(document).ready(() => {
                // let quizzes = (JSON.parse(data));
 
                 quizzes.forEach((quiz) => {
-                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"></td> <tr/>`);
+                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td id="quizID" class="quizID">${quiz.quizId}</td><td class="actionCell"><button data-name="${quiz.quizTitle}" data-id="${quiz.quizId}" class="takeQuizButton">Take Quiz</button></td> <tr/>`);
                     $('.courseId').html("Distribuerede Systemer");
+
+
 
                     $('#modal-tbody tr').hover(
                         function () {
@@ -89,11 +96,19 @@ $(document).ready(() => {
                     );
 
                 });
-                $('.actionCell').append('<button class="takeQuizButton">Take Quiz</button>');
-                $('.takeQuizButton').click(() => {
 
+                $('.takeQuizButton').click((e) => {
+                    let id = e.currentTarget.getAttribute('data-id');
+                    let name = e.currentTarget.getAttribute('data-name');
+                    SDK.Storage.persist("Quiz name", name);
+                    SDK.Storage.persist("Quiz ID", id);
+                    SDK.Storage.persist("Quiz course", "Distribuerede Systemer");
                     window.location.href = "TakeQuiz.html";
                 });
+
+
+
+
             });
         });
 
@@ -105,7 +120,7 @@ $(document).ready(() => {
                // let quizzes = (JSON.parse(data));
 
                 quizzes.forEach((quiz) => {
-                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"></td> <tr/>`);
+                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"><button data-name="${quiz.quizTitle}" data-id="${quiz.quizId}" class="takeQuizButton">Take Quiz</button></td> <tr/>`);
                     $('.courseId').html("Makroøkonomi");
 
                     $('#modal-tbody tr').hover(
@@ -119,9 +134,12 @@ $(document).ready(() => {
 
                 });
 
-                $('.actionCell').append('<button class="takeQuizButton">Take Quiz</button>');
-                $('.takeQuizButton').click(() => {
-
+                $('.takeQuizButton').click((e) => {
+                    let id = e.currentTarget.getAttribute('data-id');
+                    let name = e.currentTarget.getAttribute('data-name');
+                    SDK.Storage.persist("Quiz name", name);
+                    SDK.Storage.persist("Quiz ID", id);
+                    SDK.Storage.persist("Quiz course", "Makroøkonomi");
                     window.location.href = "TakeQuiz.html";
                 });
             });
@@ -134,7 +152,7 @@ $(document).ready(() => {
               //  let quizzes = (JSON.parse(data));
 
                 quizzes.forEach((quiz) => {
-                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td>${quiz.quizTitle}</td> <td class="courseId">${quiz.courseId}</td> <td>${quiz.quizId}</td><td class="actionCell"></td> <tr/>`);
+                    $modalTbody.append(`<tr data-id="${quiz.quizId}"><td >${quiz.quizTitle}</td><td class="courseId">${quiz.courseId}</td><td>${quiz.quizId}</td><td class="actionCell"><button data-name="${quiz.quizTitle}" data-id="${quiz.quizId}" class="takeQuizButton">Take Quiz</button></td><tr/>`);
                     $('.courseId').html("VØS 3: Finansiering");
 
                     $('#modal-tbody tr').hover(
@@ -149,9 +167,12 @@ $(document).ready(() => {
 
                 });
 
-                $('.actionCell').append('<button class="takeQuizButton">Take Quiz</button>');
-                $('.takeQuizButton').click(() => {
-
+                $('.takeQuizButton').click((e) => {
+                    let id = e.currentTarget.getAttribute('data-id');
+                    let name = e.currentTarget.getAttribute('data-name');
+                    SDK.Storage.persist("Quiz name", name);
+                    SDK.Storage.persist("Quiz ID", id);
+                    SDK.Storage.persist("Quiz course", "VØS 3: Finansiering");
                     window.location.href = "TakeQuiz.html";
                 });
             });

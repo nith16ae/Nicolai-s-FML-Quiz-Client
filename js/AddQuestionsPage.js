@@ -5,7 +5,7 @@ $(document).ready(() => {
 
 
     $('#howItWorks').hide();
-    //let questionCounter = 0;
+
 
     if (SDK.Storage.load("quiz courseID") === 1) {
         $('#createQuizCourse').text("Distribuerede Systemer");
@@ -68,7 +68,6 @@ $(document).ready(() => {
                             alert("ERROR is " + err);
                             return console.log("Bad stuff happened", err)
                         } else {
-                            //console.log(data);
 
                             data = JSON.parse(data);
                             let questionId = data.questionId;
@@ -88,9 +87,6 @@ $(document).ready(() => {
                                         choiceAnswer = 1;
                                     }
 
-
-
-                                console.log(choiceAnswer);
 
                                 choice = {
                                     questionId: questionId,

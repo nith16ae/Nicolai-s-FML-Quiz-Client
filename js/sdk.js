@@ -123,8 +123,20 @@ const SDK = {
                 cb(null, data);
 
             });
-        }
+        },
+        GetQuestions: (quizID, cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/question/" + quizID + "",
 
+            }, (err, data) => {
+                // on login-error
+                if (err) return cb(err);
+
+                cb(null, data);
+
+            });
+        },
     },
     Choice: {
         create: (choice, cb) => {
@@ -136,6 +148,19 @@ const SDK = {
                     choiceTitle: choice.choiceTitle,
                     answer: choice.answer
                 },
+            }, (err, data) => {
+                // on login-error
+                if (err) return cb(err);
+
+                cb(null, data);
+
+            });
+        },
+        GetChoices: (questionID, cb) => {
+            SDK.request({
+                method: "GET",
+                url: "/choice/" + questionID + "",
+
             }, (err, data) => {
                 // on login-error
                 if (err) return cb(err);
@@ -253,23 +278,7 @@ const SDK = {
             });
 
         },
-        loadNav: (cb) => {
-            $("#nav-container").load("nav.html", () => {
-                const currentUser = SDK.User.current();
-                if (currentUser) {
-                    $(".navbar-right").html(`
-            <li><a href="my-page.html">Your orders</a></li>
-            <li><a href="#" id="logout-link">Logout</a></li>
-          `);
-                } else {
-                    $(".navbar-right").html(`
-            <li><a href="login.html">Log-in <span class="sr-only">(current)</span></a></li>
-          `);
-                }
-                $("#logout-link").click(() => SDK.User.logOut());
-                cb && cb();
-            })
-        }},
+       },
         Storage: {
             prefix: "FMLQUIZ ",
             persist: (key, value) => {

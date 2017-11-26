@@ -506,3 +506,102 @@ button {
 #howItWorksBtn {
     color: black;
 }
+
+#Header  {
+    width: 40%;
+    align-items: center;
+    border: 1px solid black;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    background-color: white;
+    margin-top: 2%;
+
+}
+#Header div {
+    margin-top: -2%;
+    margin-bottom: 1%;
+
+}
+
+#startQuizButtonDiv {
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+#startQuizButtonDiv button {
+    background-color: #1f8c22;
+    color: white;
+    padding: 1%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+}
+
+.questionBox {
+    background-color: white;
+    padding: 2%;
+    color: black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    width: 40%;
+    font-size: 150%;
+}
+
+.choiceBox {
+    margin-top: 2%;
+    background-color: #ffffff;
+    padding: 1%;
+    color: black;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align: center;
+    margin-left: 40%;
+    width: 20%;
+    font-size: 110%;
+}
+
+#nextQuestionButton {
+    margin-top: 2%;
+    background-color: #1f8c22;
+    color: white;
+    padding: 1%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-left: 45%;
+
+}
+
+.correct {
+    background-color: #1f8c22;
+    color: white;
+}
+
+.incorrect {
+    background-color: #8c000f;
+    color: white;
+}
+
+#quitQuizBtn {
+    float: right;
+    margin-right: 4%;
+    margin-top: 1%;
+    background-color: #8c000f;
+    color: white;
+    padding: 1%;
+    font-size: 110%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
