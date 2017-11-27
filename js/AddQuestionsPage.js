@@ -6,6 +6,16 @@ $(document).ready(() => {
 
     $('#howItWorks').hide();
 
+    let NumberOfQuestions = SDK.Storage.load("Counter");
+    if (NumberOfQuestions === null) {
+
+    } else {
+        $('#questionCounterTxt').text("Number of questions in quiz: " + NumberOfQuestions  + "");
+    }
+
+        //$('#questionCounterTxt').hide();
+
+
 
     if (SDK.Storage.load("quiz courseID") === 1) {
         $('#createQuizCourse').text("Distribuerede Systemer");
@@ -20,12 +30,12 @@ $(document).ready(() => {
     }
     $('.topnav').append('<p>Quiz ID: ' + SDK.Storage.load("quiz ID") + '</p>');
 
-
-        let counterQuestion = 0;
+    let counterNew = 1;
+    let questionCounter = 1;
     $('#addQuestionButton').click((e) => {
         e.preventDefault();
-        counterQuestion++;
-        if (counterQuestion < 2) {
+
+        if (counterNew < 2) {
             $('#questionsAndAnswers').append('<input id="question" class="question" type="text" placeholder="Type in question text"><br>');
         } else {
             alert("Please save question, before adding a new one.");
@@ -39,17 +49,19 @@ $(document).ready(() => {
             e.preventDefault();
             if (counter >= 5) {
                 alert("It is not recommended to add more than 5 choices per question");
-            $('#answers').append('<div><p id="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ + '"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
+            $('#answers').append('<di class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ + '"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
             } else {
-                $('#answers').append('<div><p id="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ +'"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
+                $('#answers').append('<div class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ +'"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
             }
         });
 
         $('#saveQuestionButton').click((e) => {
+            e.preventDefault();
             if (confirm('Are you done with your questions? You will not be able to edit it later!')) {
                 if ($('#question').val().length < 5) {
                     alert("Please finish question, before saving")
                 } else {
+
 
 
                     let quizId = SDK.Storage.load("quiz ID");
@@ -101,15 +113,22 @@ $(document).ready(() => {
                                     } else if (err) {
                                        // alert("ERROR is " + err);
                                         return console.log("Bad stuff happened", err)
-                                    } else {
-                                        data = JSON.parse(choiceData);
-                                        console.log(data);
-                                    }
+                                    } else {}
                                 });
                             }
 
                             alert("Question has been added!");
                             $('#question').val("");
+
+                            let QuestionCounter  = 0;
+
+                            if (SDK.Storage.load("Counter") != QuestionCounter) {
+                                    QuestionCounter++;
+                                    let test = SDK.Storage.load("Counter");
+                                    let test2 = test + QuestionCounter;
+                                SDK.Storage.persist("Counter", test2);
+                            }
+
                             window.location.href = "AddQuestionsPage.html";
 
                         }
@@ -142,6 +161,7 @@ $(document).ready(() => {
                     SDK.Storage.remove("quiz ID");
                     SDK.Storage.remove("quiz title");
                     SDK.Storage.remove("quiz courseID");
+                    SDK.Storage.remove("Counter");
                 }
             });
 
@@ -156,6 +176,7 @@ $(document).ready(() => {
             SDK.Storage.remove("quiz ID");
             SDK.Storage.remove("quiz title");
             SDK.Storage.remove("quiz courseID");
+            SDK.Storage.remove("Counter");
         } else {}
     });
 

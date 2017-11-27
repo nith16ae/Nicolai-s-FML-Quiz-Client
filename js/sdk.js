@@ -265,7 +265,6 @@ const SDK = {
                 //On login-error
                 if (err) return cb(err);
 
-
                 data = JSON.parse(data);
                 SDK.Storage.persist("user_id", data.userId);
                 SDK.Storage.persist("username", data.username);

@@ -251,7 +251,7 @@ button {
     border: thin solid #ff353d;
     width: 90%;
     margin: 0 auto;
-    margin-top: -4.5%;
+    margin-top: -2.5%;
 
 }
 .hover {
@@ -604,4 +604,20 @@ button {
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
+}
+
+#finishBtn {
+    margin-top: 2%;
+    background-color: #1f8c22;
+    color: white;
+    padding: 1%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin-left: 47%;
+
+}
+
+.alignItems p {
+    display: inline-block;
 }
