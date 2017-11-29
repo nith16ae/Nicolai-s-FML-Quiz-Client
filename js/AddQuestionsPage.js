@@ -1,5 +1,11 @@
 $(document).ready(() => {
 
+    let ClearanceCheck = SDK.Storage.load("type");
+    if (ClearanceCheck != 2 && ClearanceCheck != 1 ) {
+        alert("Invalid access detected! You are being logged out");
+        SDK.User.logOut();
+    }
+
     let title = SDK.Storage.load("quiz title");
     $('#createQuizTitle').text(title);
 
@@ -36,7 +42,7 @@ $(document).ready(() => {
         e.preventDefault();
 
         if (counterNew < 2) {
-            $('#questionsAndAnswers').append('<input id="question" class="question" type="text" placeholder="Type in question text"><br>');
+            $('#questionsAndAnswers').append('<input id="question" class="question" type="text" maxlength="200" placeholder="Type in question text"><br>');
         } else {
             alert("Please save question, before adding a new one.");
         }
@@ -49,9 +55,9 @@ $(document).ready(() => {
             e.preventDefault();
             if (counter >= 5) {
                 alert("It is not recommended to add more than 5 choices per question");
-            $('#answers').append('<di class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ + '"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
+            $('#answers').append('<di class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" maxlength="400" placeholder="Type in choice ' + textcounter++ + '"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
             } else {
-                $('#answers').append('<div class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" placeholder="Type in choice ' + textcounter++ +'"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
+                $('#answers').append('<div class="alignItems" ><p class="counterNotation">' + counter++ + '. </p><input class=choiceInputBox type="text" maxlength="400" placeholder="Type in choice ' + textcounter++ +'"><input name="checkboxChoice" class="radioBtn" type="checkbox"></div><br>');
             }
         });
 

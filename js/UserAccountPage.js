@@ -1,5 +1,11 @@
 $(document).ready(() => {
 
+    let ClearanceCheck = SDK.Storage.load("type");
+    if (ClearanceCheck != 2 && ClearanceCheck != 1 ) {
+        alert("Invalid access detected! You are being logged out");
+        SDK.User.logOut();
+    }
+
 
     $('#adminButton').hide();
     $('#userButton').hide();

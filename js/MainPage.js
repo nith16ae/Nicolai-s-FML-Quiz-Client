@@ -1,14 +1,19 @@
 $(document).ready(() => {
 
+    let ClearanceCheck = SDK.Storage.load("type");
+    if (ClearanceCheck != 2 && ClearanceCheck != 1 ) {
+        alert("Invalid access detected! You are being logged out");
+        SDK.User.logOut();
+    }
 
-   // $('.courseDiv').slideUp(1).slideDown(1000);
     $('.homeText').slideUp(1).slideDown(1000);
 
     $('#adminButton').hide();
     $('#userButton').hide();
+    SDK.Storage.remove("Counter");
 
-    const test = SDK.Storage.load("username");
-    $('#mainpageDisplayUser').html("Welcome, " + test);
+    const username = SDK.Storage.load("username");
+    $('#mainpageDisplayUser').html("Welcome, " + username);
 
 
     if (SDK.Storage.load("type") === 2) {

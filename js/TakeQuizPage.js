@@ -1,5 +1,11 @@
 $(document).ready(() => {
 
+    let ClearanceCheck = SDK.Storage.load("type");
+    if (ClearanceCheck != 2 && ClearanceCheck != 1 ) {
+        alert("Invalid access detected! You are being logged out");
+        SDK.User.logOut();
+    }
+
 
     $('#Header').append('<h1 id="takeQuizHeader">' + SDK.Storage.load('Quiz name') +'</h1>');
     $('#Header').append('<div class="lineAddQuestionsPage"></div>');
@@ -57,6 +63,13 @@ $(document).ready(() => {
                                         } else {
                                             e.currentTarget.classList.add("incorrect");
                                             questionCounter++;
+                                            let correctChoice = choices.find((choice) => choice.answer === 2);
+                                            $("#quizandquestionsDiv").find("button.choiceBox").each(function() {
+                                                if($(this).data("id") === correctChoice.choiceId){
+                                                    $(this).addClass("correct");
+                                                }
+                                            });
+
                                         }
                                     } else {}
 

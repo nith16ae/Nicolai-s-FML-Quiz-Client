@@ -48,7 +48,7 @@ $(document).ready(() => {
             alert("Thanks for signing up " + firstName + ". You can now log in. ")
 
             SDK.User.create(username, password, firstName, lastName, type, (err, data) => {
-                if (err && err.xhr.status === 401) {
+                if (err && err.xhr.status === 400) {
                     $(".form-group").addClass("has-error");
                     return alert("400 - Shit don't work yo!");
                 } else if (err) {

@@ -1,5 +1,11 @@
 $(document).ready(() => {
 
+    let ClearanceCheck = SDK.Storage.load("type");
+    if (ClearanceCheck != 2 && ClearanceCheck != 1 ) {
+        alert("Invalid access detected! You are being logged out");
+        SDK.User.logOut();
+    }
+
          // SDK.User.loadNav();
         $('.quizzesPageMenu').slideUp(1).slideDown(1000);
         $('.quizzesButtons').hide().show().slideUp(1).delay(200).slideDown(900);

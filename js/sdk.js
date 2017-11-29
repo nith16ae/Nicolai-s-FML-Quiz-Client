@@ -14,10 +14,10 @@ const SDK = {
             method: options.method,
             headers: headers,
             contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify(options.data),
+            dataType: "text",
+            data: SDK.Encryption.encryptDecrypt(JSON.stringify(options.data)),
             success: (data, status, xhr) => {
-                cb(null, data, status, xhr);
+                cb(null, JSON.parse(SDK.Encryption.encryptDecrypt(data)), status, xhr);
             },
             error: (xhr, status, errorThrown) => {
                 cb({xhr: xhr, status: status, error: errorThrown});
@@ -201,7 +201,7 @@ const SDK = {
     },
     User: {
         findAll: (cb) => {
-            SDK.request({method: "GET", url: "/user"}, cb);
+            SDK.request({method: "GET", url: "/user/getAll"}, cb);
         },
         current: () => {
             return SDK.Storage.load("user");
@@ -210,6 +210,9 @@ const SDK = {
             SDK.request({
                 method: "POST",
                 url: "/user",
+                header: {
+
+                    },
                 data: {username: username, password: password, firstName: firstName, lastName: lastName, type: type},
             }, (err, data) => {
                 //On login-error
@@ -238,6 +241,9 @@ const SDK = {
             SDK.request({
                     method: "DELETE",
                     url: "/user/" + id,
+                    data: {
+
+                    }
                 },
                 (err) => {
                     if (err) return cb(err);
@@ -257,6 +263,9 @@ const SDK = {
             SDK.request({
                 url: "/user/login",
                 method: "POST",
+                headers: {
+
+                },
                 data: {
                     username: username,
                     password: password
@@ -265,7 +274,7 @@ const SDK = {
                 //On login-error
                 if (err) return cb(err);
 
-                data = JSON.parse(data);
+                //data = JSON.parse(data);
                 SDK.Storage.persist("user_id", data.userId);
                 SDK.Storage.persist("username", data.username);
                 SDK.Storage.persist("firstname", data.firstName);
@@ -295,5 +304,28 @@ const SDK = {
             remove: (key) => {
                 window.localStorage.removeItem(SDK.Storage.prefix + key);
             }
+        },
+    Encryption: {
+
+        encryptDecrypt(input) {
+            var enc = true;
+            if (enc) {
+                if (input !== undefined && input.length !== 0) {
+                    var key = ['K', 'O', 'C', 'H']; //Can be any chars, and any size array
+                    var output = [];
+                    for (var i = 0; i < input.length; i++) {
+                        var charCode = input.charCodeAt(i) ^ key[i % key.length].charCodeAt(0);
+                        output.push(String.fromCharCode(charCode));
+                    }
+                    return output.join("");
+                } else {
+                    return input
+                }
+            }
+            else{
+                return input;
+            }
         }
+    }
+
 };
